@@ -2,7 +2,8 @@ from django.db import models
 
 from django.conf import settings
 from django.contrib.auth.models import User  # 장고 기본 사용자 모델
-from django.urls import reverse #get_absolute_url
+from django.urls import reverse  # get_absolute_url
+
 
 # Create your models here.
 
@@ -23,10 +24,7 @@ class Photo(models.Model):
         ordering = ['-updated']  # 글 수정시간의 내림차순으로 정렬
 
     def __str__(self):
-        return self.author.username+" "+self.created.strftime("%Y-%m-%d|%H:%M:%S")
+        return self.author.username + " " + self.created.strftime("%Y-%m-%d|%H:%M:%S")
 
-
-    def get_absolute_url(self): #주소를 호출해서 detail뷰로 이동한다
+    def get_absolute_url(self):  # 주소를 호출해서 detail뷰로 이동한다
         return reverse('photo:photo_detail', args=[str(self.id)])
-
-
