@@ -8,3 +8,7 @@ class PhotoForm(forms.ModelForm):
 
 
 
+class PhotoUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ['text']

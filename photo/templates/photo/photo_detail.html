@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    {{ photos.author }}
+    <img src="{{ photos.photo.url }}" alt="">
+    {{ photos.text }}
+    <a href="{% url 'photo:update' photos.id %}">변경</a>
 {% endblock %}
