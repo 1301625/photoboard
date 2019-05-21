@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 from .models import Photo
 from django.views import generic
-from .forms import PhotoForm
+from .forms import PhotoForm,PhotoUpdateForm
 
 
 def photo_list(request):
@@ -36,11 +36,11 @@ def photo_create(request, photo=None):
 def photo_update(request, pk):
     photo = get_object_or_404(Photo, pk=pk)
     if request.method == 'POST':
-        form = PhotoForm(request.POST, instance=photo)
+        form = PhotoUpdateForm(request.POST, instance=photo)
         if form.is_valid():
             form.save()
         return redirect('photo:list')
     else:
-        form = PhotoForm(instance=photo)
+        form = PhotoUpdateForm(instance=photo)
     return render(request, 'photo/photo_update.html', {
         'form': form, })

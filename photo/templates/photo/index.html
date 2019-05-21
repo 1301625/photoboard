@@ -1,25 +1,61 @@
 {% extends 'base.html' %}
 
+{% block extra_body %}
+    <script>
+
+
+        $(document).on('click', '#photo-status', function (e) {
+            e.preventDefault(); // 기본동작 중지
+            var url = $(this).attr('href');
+            //alert(url)
+            $.get(url)
+                .done(function(response){
+                    console.log(response);
+                });
+
+            var $modal = $('#modal-status');
+            $modal.find('.btn-detail').attr('href',url);
+            $modal.modal();
+        });
+        //$('#photo-status').click(function (e) {
+
+        //});
+
+    </script>
+{% endblock %}
 
 {% block content %}
     {% if photos %}
-        {% for post in photos %}
-            <p>{{ post.author }}</p>
-            <button id="open" onclick="openModal()">∙∙∙</button>
-            <img src="{{ post.photo.url }}" alt="">
-            <p>{{ post.id }}</p>
-        {% endfor %}
-
+        {% include 'photo/_photo_list.html' %}
     {% endif %}
 
     <a href="{% url 'photo:create' %}">생성</a>
- <div class="modal hidden">
+    <!----
+    <div class="modal hidden" id="modal-status">
         <div class="modal__overlay"></div>
         <div class="modal_content">
-            <h1><a href="">수정</a></h1>
-            <h1><a href="">삭제</a></h1>
+
+
             <button>닫기</button>
         </div>
+    </div>-->
+
+    <div class="modal fade" id="modal-status" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h1><a class="btn-detail">수정</a></h1>
+                <h1><a href="">삭제</a></h1>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>취소</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <a class="btn btn-primary btn-detail" id="btn-detail">자세히</a>
+            </div>
+        </div>
     </div>
+   </div>
 {% endblock %}
 

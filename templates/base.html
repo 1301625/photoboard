@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
-        .modal{
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        .modal {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
             position: absolute;
             top: 0;
             left: 0;
@@ -17,12 +18,14 @@
             align-items: center;
 
         }
+
         .modal__overlay {
-            background-color : rgba(0,0,0,0.6);
+            background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             height: 100%;
             position: absolute;
         }
+
         .modal_content {
             background-color: white;
             padding: 50px 100px;
@@ -31,39 +34,50 @@
             top: 0px;
             border-radius: 10px;
             width: 10%;
-            box-shadow: 0 10px 20px rgba(0, 0, 0,  0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         }
+
         h1 {
             margin: 0;
         }
+
         .hidden {
-            display :none;
+            display: none;
         }
-        a{
+
+        a {
             margin: 0;
         }
     </style>
 </head>
 
 <body>
-    {% block content %}
-    
-    {% endblock %}
-    <script>
-        const openButton = document.getElementById("open");
-        const modal = document.querySelector(".modal");
-        const overlay  = modal.querySelector(".modal__overlay");
-        const closeBtn  = modal.querySelector("button");
+{% block content %}
 
-        const openModal = () =>{
-            modal.classList.remove("hidden");
-        }
-        const closeModal = () => {
-            modal.classList.add("hidden");
-        }
-        overlay.addEventListener("click", closeModal);
-        closeBtn.addEventListener("click", closeModal);
-        openButton.addEventListener("click", openModal);
-    </script>
+{% endblock %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="http://underscorejs.org/underscore-min.js"></script>
+<script>
+
+    /*
+    const openButton = document.getElementById("open");
+    const modal = document.querySelector(".modal");
+    const overlay = modal.querySelector(".modal__overlay");
+    const closeBtn = modal.querySelector("button");
+
+    const openModal = () => {
+        modal.classList.remove("hidden");
+    }
+    const closeModal = () => {
+        modal.classList.add("hidden");
+    }
+    overlay.addEventListener("click", closeModal);
+    closeBtn.addEventListener("click", closeModal);
+    openButton.addEventListener("click", openModal)*/
+
+</script>
+{% block extra_body %}
+{% endblock %}
 </body>
 </html>
