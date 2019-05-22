@@ -8,5 +8,7 @@ urlpatterns = [
     path('<int:pk>',  views.photo_detail, name='detail'),
     path('create/', views.photo_create, name='create'),
     path('update/<int:pk>', views.photo_update, name='update'),
+    path('delete/<int:pk>', views.photo_delete, name='delete'),
+
 
 ]

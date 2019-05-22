@@ -2,25 +2,26 @@
 
 {% block extra_body %}
     <script>
-
-
-        $(document).on('click', '#photo-status', function (e) {
+        /*
+            _photo_list html에 클래스 지정
+            .photo-status 지정된 태크 클릭시
+            해당 post.id 값 전달
+            모달창 클래스 지정 a 태그 설정
+            post.id 값과 원하는 url을 모달창 a태크 url 설정
+         */
+        $(document).on('click', '.photo-status', function (e) {
             e.preventDefault(); // 기본동작 중지
             var url = $(this).attr('href');
-            //alert(url)
+            var url_id = $(this).attr('id');
             $.get(url)
                 .done(function(response){
-                    console.log(response);
                 });
 
             var $modal = $('#modal-status');
-            $modal.find('.btn-detail').attr('href',url);
+            $modal.find('.btn-detail').attr('href','update/'+url_id);
+            $modal.find('.btn-delete').attr('href','delete/'+url_id);
             $modal.modal();
         });
-        //$('#photo-status').click(function (e) {
-
-        //});
-
     </script>
 {% endblock %}
 
@@ -45,14 +46,10 @@
         <div class="modal-content">
             <div class="modal-body">
                 <h1><a class="btn-detail">수정</a></h1>
-                <h1><a href="">삭제</a></h1>
+                <h1><a class="btn-delete">삭제</a></h1>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>취소</span>
                 </button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <a class="btn btn-primary btn-detail" id="btn-detail">자세히</a>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 from .models import Photo
 from django.views import generic
-from .forms import PhotoForm,PhotoUpdateForm
+from .forms import PhotoForm, PhotoUpdateForm
 
 
 def photo_list(request):
@@ -43,4 +43,12 @@ def photo_update(request, pk):
     else:
         form = PhotoUpdateForm(instance=photo)
     return render(request, 'photo/photo_update.html', {
-        'form': form, })
+        'form': form,
+        'photo': photo,  # 폼에 사진 보여주게 하기 위해
+    })
+
+
+def photo_delete(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    photo.delete()
+    return redirect('photo:list')
