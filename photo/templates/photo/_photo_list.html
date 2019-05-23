@@ -3,6 +3,8 @@
     <a href="{% url 'photo:update' post.id %}" id="{{ post.id }}" class="photo-status">∙∙∙</a>
 
     <br>
-    <img src="{{ post.photo.url }}" alt="">
+    <div>
+    <img src="{{ post.photo.url }}" alt="" width="600px" height="600px">
+    </div>
     <p>{{ post.text }}</p>
 {% endfor %}

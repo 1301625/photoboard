@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <img src="{{ photo.photo.url }}" alt="">
+    <img src="{{ photo.photo.url }}" alt="" width="600" height="600">
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_ul }}
