@@ -131,3 +131,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#로그인후 페이지 이동
+LOGIN_REDIRECT_ULR = '/'
